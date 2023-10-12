@@ -5,6 +5,7 @@ package main
 // #cgo LDFLAGS: -L/usr/lib/aarch64-linux-gnu -lxfce4panel-2.0
 // #include <libxfce4panel/libxfce4panel.h>
 import "C"
+import "github.com/gotk3/gotk3/gtk"
 
 func main() {
 	a := C.libxfce4panel_check_version(1, 2, 1)
@@ -17,4 +18,5 @@ func main() {
 //export Construct
 func Construct(ptr *C.XfcePanelPluginFunc) {
 	println("hello I'm registering my plugin")
+	gtk.Init(nil)
 }
